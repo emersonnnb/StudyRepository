@@ -1,6 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~bootstrap/dist/css/bootstrap.min.css';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~bootstrap/dist/css/bootstrap.min.css';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.mat-table thead,.mat-table tbody,.mat-table tfoot, mat-header-row, mat-row, mat-footer-row,
+[mat-header-row],[mat-row],[mat-footer-row],.mat-table-sticky {
+  background: #fafafa !important;
+}
+
+
+.mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+  }
+  
+  .mat-row:hover {
+    background-color: #d8d8d8 !important;
+  }
+  
+  th.mat-header-cell {
+    border-bottom-width: 0px;
+  }
+
+  
+.mat-header-cell {
+    font-family: Roboto;
+    font-weight: 900;
+    font-size: 16px !important;
+    line-height: 24px;
+    color: #363636;
+    letter-spacing: 0.05em;
+    justify-content: center;
+  }  
+
+  .mdc-data-table__cell {
+    overflow: unset !important;
+  }
+
+  .footer-row {
+    background: #f4f4f4 !important;
+    margin: 0 auto !important;
+    border-top-width: 1.1px !important;
+    border-top-style: solid !important;
+    border-bottom-width: 1.1px !important;
+    border-bottom-style: solid !important;
+    border-bottom-color: #d8d8d8 !important;
+    border-top-color: #d8d8d8 !important;
+  }
+  
+  .footer-row p {
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    margin: 4px 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  ::ng-depp .mat-mdc-snack-bar-label {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  

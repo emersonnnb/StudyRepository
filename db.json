@@ -1,0 +1,11 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "name": "Arroz",
+      "price": "1.5",
+      "category": "Cereais",
+      "stock": "15"
+    }
+  ]
+}

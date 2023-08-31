@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,13 +17,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-
+import { ConfirmationDialogComponent } from './shared/components/confirmation-dialog/confirmation-dialog/confirmation-dialog.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 @NgModule({
   declarations: [
     AppComponent,    
     ProdutosListComponent,
-    ProdutosFormComponent,    
+    ProdutosFormComponent,
+    ConfirmationDialogComponent,    
   ],
   imports: [
     BrowserModule,
@@ -38,6 +42,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
+    HttpClientModule, 
+    MatSnackBarModule,
+    CurrencyMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]

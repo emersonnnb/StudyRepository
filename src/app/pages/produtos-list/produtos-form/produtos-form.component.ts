@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProductModel } from 'src/app/core/model/product.model';
+import { ProdutoService } from '../services/produto.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-produtos-form',
@@ -19,21 +21,22 @@ export class ProdutosFormComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<ProdutosFormComponent>,    
+    private api: ProdutoService, 
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar   
   ) { }
   
-  ngOnInit(): void {
-
-    console.log(this.data)
-    this.produto = [];
+  ngOnInit(): void {    
+    
     this.mode = this.data.mode;
-    this.id = this.data.id;
+    this.id = this.data.id;    
 
     this.formProduto = this.formBuilder.group({
       id:[''],
-      name:[''],
-      price:[''],
-      category:[''],      
-      stock:[''],      
+      name:['',Validators.required],
+      price:['',Validators.required],
+      category:['',Validators.required],      
+      stock:['',Validators.required],      
     });
 
     switch (this.mode) {
@@ -43,44 +46,66 @@ export class ProdutosFormComponent implements OnInit {
 
       case 'view':
         this.formProduto.disable();
-        //this.getbyidLocale();
+        this.getProdutoId();
         break;
 
       case 'edit':
         this.formProduto.enable();        
-        //this.getbyidLocale();
+        this.getProdutoId();
         break;   
     }
   }
+  private getProdutoId(): void {
+    this.api.getIdProduto(this.id)
+      .subscribe({
+        next: (res: ProductModel) => {          
+          this.formProduto.patchValue(res);         
+        },
+        error: (error) => {
+          console.log(error)       
+        }
+      })
+  }
 
-  editProduto() {
-    this.mode = 'edit';
-    this.formProduto.enable();
-  };
 
-  addProduto() {
-    console.log(this.produto);
+  addProduto() {    
     const values = this.formProduto.value;
-
     if (this.formProduto.invalid ) {
       this.formProduto.markAllAsTouched();
       return;
-    }
-
-    this.produto.push(values);
-    localStorage.setItem('BD', JSON.stringify(this.produto));
-    console.log(this.produto)
-    // this.api.postLocalidade(values).subscribe({
-    //   next: () => {
-    //     this.formOcorrencia.reset();
-    //     this.dialogRef.close();
-    //     this.common.showSnack("Dados salvos com sucesso!");
-    //   },
-    //   error: (error) => {
-    //     this.dialogService.alert(error.error?.message)
-    //   }
-    // });
+    }    
+    if(this.mode === 'create'){
+      this.api.postProduto(values).subscribe({
+        next: () => {
+          this.formProduto.reset();
+          this.dialogRef.close();
+          this._snackBar.open("Dados salvos com sucesso!!", '', {duration: 2000});
+        },
+        error: (error) => {          
+          console.log(error)
+        },
+      });
+    }else
+      this.save();
   };
+
+  save(){
+    const values = this.formProduto.value;
+    this.api.updateProduto(this.id, values).subscribe({
+      next: () => {
+        this.dialogRef.close();
+        this._snackBar.open("Dados salvos com sucesso!!", '', {duration: 2000, });
+      },
+      error: (error: any) => {        
+        console.log(error);
+      },
+    });    
+  }
+
+  changeToEdit(): void {
+    this.mode = "edit";
+    this.formProduto.enable();
+  }
 
 
   exit(): void {  

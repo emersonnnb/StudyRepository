@@ -21,15 +21,15 @@ export class ProdutoService {
     return this.httpClient.get(`${environment.apiUrl}/produtos/${id}`);
   };
 
-  public getAllCategoria(): Observable<any> {
-    return this.httpClient.get(`${environment.apiUrl}/categorias/`);
-  }
-
   public postProduto(payload: ProductModel): Observable<ProductModel> {
     return this.httpClient.post<ProductModel>(`${environment.apiUrl}/produtos`, payload);
   };
 
+  public updateProduto(id: number,data: ProductModel ): Observable<ProductModel> {
+    return this.httpClient.put<ProductModel>(`${environment.apiUrl}/produtos/${id}`, data);
+  };
+
   public deleteProduto(id: number): Observable<any> {
-    return this.httpClient.delete(`${environment.apiUrl}/produtos/${id}`)
+    return this.httpClient.delete(`${environment.apiUrl}/produtos/${id}`);
   };
 }
