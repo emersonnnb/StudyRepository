@@ -6,6 +6,27 @@
       "price": 5.15,
       "category": "Bazar",
       "stock": 45
+    },
+    {
+      "id": 2,
+      "name": "Macarrão",
+      "price": 2.5,
+      "category": "Massas",
+      "stock": 4
+    },
+    {
+      "id": 3,
+      "name": "Lampada",
+      "price": 5.5,
+      "category": "Bazar",
+      "stock": 7
+    },
+    {
+      "id": 4,
+      "name": "Miojo",
+      "price": 0.8,
+      "category": "Massas",
+      "stock": 50
     }
   ]
 }
