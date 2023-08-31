@@ -3,9 +3,9 @@
     {
       "id": 1,
       "name": "Arroz",
-      "price": "1.5",
-      "category": "Cereais",
-      "stock": "15"
+      "price": 5.15,
+      "category": "Bazar",
+      "stock": 45
     }
   ]
 }
