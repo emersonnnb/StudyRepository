@@ -10,11 +10,31 @@
 
   ### ✔ Demonstração da aplicação
 
+<h6 align="center">TELA DE LISTAGEM</h6>
+<h4 align="center">
+  <img alt="tela login" title="#Tela_Listagem" src="https://github.com/emersonnnb/StudyRepository/blob/Master/src/imgs/listagem.png" />
+</h4>
+
+<HR>
+
 <h6 align="center">TELA DE CADASTRO</h6>
 <h4 align="center">
-  <img alt="tela login" title="#Tela_Cdastro" src="https://github.com/emersonnnb/StudyRepository/blob/Master/src/imgs/cadastro.png" />
+  <img alt="tela login" title="#Tela_Cadastro" src="https://github.com/emersonnnb/StudyRepository/blob/Master/src/imgs/cadastro.png" />
 </h4>
+
 <HR>
+
+<h6 align="center">TELA DE EDITAR</h6>
+<h4 align="center">
+  <img alt="tela login" title="#Tela_Editar" src="https://github.com/emersonnnb/StudyRepository/blob/Master/src/imgs/editar.png" />
+</h4>
+
+<HR>
+
+<h6 align="center">TELA DE EXCLUIR</h6>
+<h4 align="center">
+  <img alt="tela login" title="#Tela_Excluir" src="https://github.com/emersonnnb/StudyRepository/blob/Master/src/imgs/excluir.png" />
+</h4>
 
 
 ## Version
