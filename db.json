@@ -27,6 +27,27 @@
       "price": 0.8,
       "category": "Massas",
       "stock": 50
+    },
+    {
+      "id": 5,
+      "name": "Feijão",
+      "price": 2.5,
+      "category": "Bazar",
+      "stock": 45
+    },
+    {
+      "id": 6,
+      "name": "Suco de uva",
+      "price": 15,
+      "category": "Bazar",
+      "stock": 15
+    },
+    {
+      "id": 7,
+      "name": "hbhb",
+      "price": 15215.21,
+      "category": "Cereais",
+      "stock": 2
     }
   ]
 }

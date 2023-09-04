@@ -6,7 +6,7 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .cursor-pointer{
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .mat-table thead,.mat-table tbody,.mat-table tfoot, mat-header-row, mat-row, mat-footer-row,
@@ -14,21 +14,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background: #fafafa !important;
 }
 
-
 .mat-row .mat-cell {
     border-bottom: 1px solid transparent;
     border-top: 1px solid transparent;
-  }
+}
   
-  .mat-row:hover {
+.mat-row:hover {
     background-color: #d8d8d8 !important;
-  }
+}
   
-  th.mat-header-cell {
+th.mat-header-cell {
     border-bottom-width: 0px;
-  }
+}
 
-  
 .mat-header-cell {
     font-family: Roboto;
     font-weight: 900;
@@ -37,13 +35,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: #363636;
     letter-spacing: 0.05em;
     justify-content: center;
-  }  
+}  
 
-  .mdc-data-table__cell {
+.mdc-data-table__cell {
     overflow: unset !important;
-  }
+}
 
-  .footer-row {
+.footer-row {
     background: #f4f4f4 !important;
     margin: 0 auto !important;
     border-top-width: 1.1px !important;
@@ -52,7 +50,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     border-bottom-style: solid !important;
     border-bottom-color: #d8d8d8 !important;
     border-top-color: #d8d8d8 !important;
-  }
+}
   
   .footer-row p {
     text-align: center;
@@ -71,4 +69,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     align-items: center !important;
   }
 
-  
+  .material-icons{
+    font-size: 18px !important;
+  }

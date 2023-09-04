@@ -20,6 +20,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { ConfirmationDialogComponent } from './shared/components/confirmation-dialog/confirmation-dialog/confirmation-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     MatButtonModule,
     HttpClientModule, 
     MatSnackBarModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
