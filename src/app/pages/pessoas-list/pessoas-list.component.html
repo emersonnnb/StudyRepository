@@ -1,0 +1,81 @@
+<div class="container">     
+    <div mat-dialog-content class="mt-2 me-3 mb-2">
+        <form [formGroup]="formPessoa">
+
+            <div class="row">
+                <div class="col-4">
+                    <mat-form-field floatLabel="always" appearance="outline"  class="w-100">
+                        <mat-label> Nome </mat-label>
+                        <input matInput placeholder="Nome" formControlName="name">
+                    </mat-form-field> 
+                </div>                
+                <div class="col-2">
+                    <mat-form-field floatLabel="always" appearance="outline" class="w-100" >
+                        <mat-label> Data de Nascimento </mat-label>
+                        <input matInput [matDatepicker]="picker" placeholder="00/00/0000" formControlName="dtNascimento" >                        
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-2">
+                    <mat-form-field floatLabel="always" appearance="outline" class="w-100">
+                        <mat-label> Sexo </mat-label>
+                        <mat-select placeholder="Sexo" formControlName="sexo">
+                            <mat-option value="masculino">Masculino</mat-option>
+                            <mat-option value="feminino">Feminino</mat-option>                        
+                        </mat-select>
+                    </mat-form-field>
+                </div>            
+            </div>     
+
+            <div class="row">  
+
+                <div class="col-4">
+                    <mat-form-field floatLabel="always" appearance="outline" class="w-100" >
+                        <mat-label> Cep </mat-label>
+                        <input type="number" matInput placeholder="xx-xxxx-xxxx" formControlName="cep">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field floatLabel="always" appearance="outline" class="w-100" >
+                        <mat-label> Endereço </mat-label>
+                        <input matInput placeholder="Endereço" formControlName="address">
+                    </mat-form-field>
+                </div>
+                
+                <div class="col-4">
+                    <mat-form-field floatLabel="always" appearance="outline" class="w-100" >
+                        <mat-label> Numero </mat-label>
+                        <input matInput placeholder="numero" formControlName="numero">
+                    </mat-form-field>
+                </div>             
+            </div>           
+
+            <div class="row">
+                <div class="col-4">
+                    <mat-form-field floatLabel="always" appearance="outline"  class="w-100">
+                        <mat-label> Complemento </mat-label>
+                        <input matInput placeholder="Complemento" formControlName="complement">
+                    </mat-form-field> 
+                </div>                
+
+                <div class="col-4">
+                    <mat-form-field floatLabel="always" appearance="outline" class="w-100" >
+                        <mat-label> Telefone </mat-label>
+                        <input type="number" matInput placeholder="(xx)xxxx-xxxx" formControlName="telephone">
+                    </mat-form-field>
+                </div>                 
+            </div>           
+
+        </form>            
+
+        <!-- <button class="w-100" color="primary" mat-flat-button *ngIf="mode !== 'view'" (click)="addProduto()"> 
+            <mat-icon aria-hidden="false">save</mat-icon>
+                Salvar        
+        </button>
+        <button class="w-100" mat-flat-button *ngIf="mode === 'view'" (click)="changeToEdit()"> 
+            <mat-icon aria-hidden="false">edit</mat-icon>
+                Editar        
+        </button> -->
+    </div>       
+</div>

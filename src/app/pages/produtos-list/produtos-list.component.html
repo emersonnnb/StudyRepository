@@ -1,10 +1,45 @@
 <div class="container">
+  
+  <form [formGroup]="searchForm" class="pe-0">
+
+    <div class="row w-100 mt-3 ms-0">
+      <div class="col-2 ps-0">
+        <mat-form-field floatLabel="always" appearance="outline" class="w-100">
+          <mat-label>Pesquisar por </mat-label>
+          <mat-select formControlName="searchBy" placeholder="Pesquisar por" required>
+            <mat-option *ngFor="let item of searchType" [value]="item.field" >
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>  
+
+      <div class="col-8">        
+        <mat-form-field floatLabel="always" appearance="outline" class="w-100">
+          <input matInput formControlName="searchType" minlength="2" />
+        </mat-form-field>              
+      </div>
+
+      <div class="col-2 pe-0">              
+        <button class="w-100" mat-stroked-button color="primary" (click)="pesquisar()"
+          *ngIf="habilitaPesquisa">
+          <mat-icon>search</mat-icon>&nbsp;Pesquisar
+        </button>
+
+        <button class="w-100"  mat-stroked-button color="warn" (click)="limparPesquisa(true);"
+          *ngIf="!habilitaPesquisa">
+          <mat-icon aria-hidden="false" aria-label="Limpar pesquisa"> cancel </mat-icon> Limpar
+          pesquisa
+        </button>
+      </div>
+    </div>
+  </form>  
+
+  <!-- {{ searchForm.value | json }} -->
+
   <div class="example-container mat-elevation-z8">
   <div style="margin-top: 10px;">
-    <mat-form-field appearance="fill">
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-    </mat-form-field>
+
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">      
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>Código</th>
@@ -52,7 +87,7 @@
             <mat-icon aria-hidden="false" aria-label="Criar equipe">
               add_circle_outline
             </mat-icon>
-            <span class="px-1">Cadastrar equipe</span>
+            <span class="px-1">Cadastrar Produto</span>
           </p>
         </td>
       </ng-container>
@@ -68,10 +103,10 @@
       </tr>
     </table>
    
-    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" [length]="pageEvent.length"
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" [length]="pageEvent.length"
       [pageIndex]="pageEvent.pageIndex" [pageSize]="pageEvent.pageSize" showFirstLastButtons
       (page)="getProductslist($event)" aria-label="Select page of users">
-    </mat-paginator>
+    </mat-paginator> -->
 
   </div>
   </div>

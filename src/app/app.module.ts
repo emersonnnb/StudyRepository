@@ -4,7 +4,7 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProdutosListComponent } from './pages/produtos-list/produtos-list.component';
+
 import { ProdutosFormComponent } from './pages/produtos-list/produtos-form/produtos-form.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,13 +21,24 @@ import { ConfirmationDialogComponent } from './shared/components/confirmation-di
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { DialogServiceComponent } from './shared/dialog-service/dialog-service.component';
+import { ProdutosListComponent } from './pages/produtos-list/produtos-list.component';
+import { MenuComponent } from './pages/menu/menu.component';
+import { PessoasListComponent } from './pages/pessoas-list/pessoas-list.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,    
     ProdutosListComponent,
     ProdutosFormComponent,
-    ConfirmationDialogComponent,    
+    ConfirmationDialogComponent,
+    DialogServiceComponent,
+    MenuComponent,
+    PessoasListComponent,    
   ],
   imports: [
     BrowserModule,
@@ -46,7 +57,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     HttpClientModule, 
     MatSnackBarModule,
     CurrencyMaskModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

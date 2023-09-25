@@ -41,13 +41,6 @@
       "price": 15,
       "category": "Bazar",
       "stock": 15
-    },
-    {
-      "id": 7,
-      "name": "hbhb",
-      "price": 15215.21,
-      "category": "Cereais",
-      "stock": 2
     }
   ]
 }

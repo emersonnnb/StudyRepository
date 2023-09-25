@@ -9,6 +9,7 @@ import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmat
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-produtos-list',
@@ -17,9 +18,18 @@ import { MatSort } from '@angular/material/sort';
 })
 export class ProdutosListComponent implements OnInit {
 
+  searchBy = '';
+  searchType = [
+    { id: 0, field: 'code', name: "Código", isText: false },
+    { id: 1, field: 'name', name: "Nome", isText: true },
+    { id: 2, field: 'category', name: "Categoria", isText: true },     
+  ];
+
   dataSource = new MatTableDataSource<ProductModel>;  
   displayedColumns: string[] = [ "id", "name", "price", "category", "stock", "action" ];
-
+  searchForm!: FormGroup;
+  habilitaPesquisa: boolean = true;
+  
   pageEvent: PageEvent = {
     pageIndex: 0,
     pageSize: 10,
@@ -32,24 +42,39 @@ export class ProdutosListComponent implements OnInit {
   constructor(
     public dialog: MatDialog,    
     private api: ProdutoService,
-    private _snackBar: MatSnackBar   
-  ) { };
+    private _snackBar: MatSnackBar,
+    private formBuilder: FormBuilder,    
+    
+  ) { 
+    this.searchForm = this.formBuilder.group({
+      searchBy: [null, Validators.required],
+      searchType: [null, Validators.required],
+    })
+  };
   
   ngOnInit(): void {   
     this.getProductslist(this.pageEvent);  
   }
 
-  getProductslist(event: PageEvent){
-    console.log(event);
+  getProductslist(event: PageEvent){    
+  console.log(this.searchForm.controls['searchBy'].value)
 
     if (this.pageEvent.pageSize !== event.pageSize){
       event.pageIndex = 0;
     }
-    
+    this.pageEvent = event;
+        
+    const key = this.searchForm?.controls['searchBy'].value;
+    const value = this.searchForm?.controls['searchType'].value; 
+
     this.pageEvent = event;
     let params = new HttpParams()
-    .set('_page', this.pageEvent.pageIndex)
-    .set('_limit', this.pageEvent.pageSize)
+    // .set('_page', this.pageEvent.pageIndex)
+    // .set('_limit', this.pageEvent.pageSize)
+
+    if (!this.habilitaPesquisa) {
+      params = params.set(key, value)
+    }
 
     this.api.getAllProduto(params).subscribe({
       next: (res): void => {         
@@ -80,8 +105,7 @@ export class ProdutosListComponent implements OnInit {
 
   openDialog( id?: number, mode?: string){
     return this.dialog.open(ProdutosFormComponent, {
-      width: "25%",
-      height: "55vh",      
+      width: "25%",           
       data: { id, mode },      
     }).afterClosed().subscribe(() => {
       this.getProductslist(this.pageEvent);  
@@ -91,10 +115,37 @@ export class ProdutosListComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    console.log(this.dataSource);
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+    // if (this.dataSource.paginator) {
+    //   this.dataSource.paginator.firstPage();
+    // }
+  }
+
+  limparPesquisa(full = false): void {    
+    if (!this.habilitaPesquisa) {
+      if (full) {
+        this.searchForm?.reset();
+        //this.searchForm?.controls.searchBy.setValue(this.searchType[0]);
+        this.habilitaPesquisa = true;
+        this.getProductslist(this.pageEvent);  
+      }
+      else {
+        this.habilitaPesquisa = true;
+        //this.searchForm.controls.searchType.setValue(null);
+      }
     }
   }
+
+  pesquisar(): void { 
+  
+    if (this.searchForm.invalid) {
+      this.searchForm.markAllAsTouched();
+      return;
+    }
+      this.habilitaPesquisa = false;
+      this.getProductslist(this.pageEvent);      
+  }
+
 
 }
