@@ -14,11 +14,11 @@ export class ProdutoService {
   ) { }
 
   public getAllProduto(params: HttpParams): Observable<any> {
-    return this.httpClient.get(`${environment.apiUrl}/produtos/`, { params });
+    return this.httpClient.get(`${environment.apiUrl}/produtos`, { params });
   }
 
   public getIdProduto(id: number): Observable<any> {
-    return this.httpClient.get(`${environment.apiUrl}/produtos/${id}`);
+    return this.httpClient.get(`${environment.apiUrl}/produtos${id}`);
   };
 
   public postProduto(payload: ProductModel): Observable<ProductModel> {

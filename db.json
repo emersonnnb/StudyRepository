@@ -2,9 +2,9 @@
   "produtos": [
     {
       "id": 1,
-      "name": "Arroz",
+      "name": "arroz",
       "price": 5.15,
-      "category": "Bazar",
+      "category": "bazar",
       "stock": 45
     },
     {

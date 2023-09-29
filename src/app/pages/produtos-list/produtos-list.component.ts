@@ -20,7 +20,7 @@ export class ProdutosListComponent implements OnInit {
 
   searchBy = '';
   searchType = [
-    { id: 0, field: 'code', name: "Código", isText: false },
+    { id: 0, field: 'id', name: "Código", isText: false },
     { id: 1, field: 'name', name: "Nome", isText: true },
     { id: 2, field: 'category', name: "Categoria", isText: true },     
   ];
@@ -56,7 +56,8 @@ export class ProdutosListComponent implements OnInit {
     this.getProductslist(this.pageEvent);  
   }
 
-  getProductslist(event: PageEvent){    
+  getProductslist(event: PageEvent){   
+
   console.log(this.searchForm.controls['searchBy'].value)
 
     if (this.pageEvent.pageSize !== event.pageSize){
@@ -137,13 +138,13 @@ export class ProdutosListComponent implements OnInit {
     }
   }
 
-  pesquisar(): void { 
-  
+  pesquisar(): void {   
     if (this.searchForm.invalid) {
       this.searchForm.markAllAsTouched();
       return;
     }
       this.habilitaPesquisa = false;
+      
       this.getProductslist(this.pageEvent);      
   }
 
