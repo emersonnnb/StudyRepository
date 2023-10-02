@@ -41,6 +41,13 @@
       "price": 15,
       "category": "Bazar",
       "stock": 15
+    },
+    {
+      "id": 7,
+      "name": "teste",
+      "price": 1230,
+      "category": "Cereais",
+      "stock": 1
     }
   ]
 }

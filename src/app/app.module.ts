@@ -27,6 +27,10 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { PessoasListComponent } from './pages/pessoas-list/pessoas-list.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 
@@ -38,7 +42,11 @@ import {MatNativeDateModule} from '@angular/material/core';
     ConfirmationDialogComponent,
     DialogServiceComponent,
     MenuComponent,
-    PessoasListComponent,    
+    PessoasListComponent,
+    FooterComponent,
+    NavbarComponent,
+    SidebarComponent,
+    DashboardComponent,    
   ],
   imports: [
     BrowserModule,

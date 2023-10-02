@@ -58,12 +58,12 @@ export class ProdutosListComponent implements OnInit {
     this.getProductslist(this.pageEvent);  
   }
     
-  @HostListener('document:mousedown', ['$event'])
-  clickOut(event:any): void{
-    if (!this.toggle?.nativeElement.contains(event.target)) {
-      this.menuIndex = undefined;
-    }
-  }
+  // @HostListener('document:mousedown', ['$event'])
+  // clickOut(event:any): void{
+  //   if (!this.toggle?.nativeElement.contains(event.target)) {
+  //     this.menuIndex = undefined;
+  //   }
+  // }
 
 
   getProductslist(event: PageEvent){   
