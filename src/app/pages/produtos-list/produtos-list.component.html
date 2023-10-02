@@ -66,18 +66,27 @@
         <td mat-cell *matCellDef="let row">{{ row.stock }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef> Ação </th>        
-        <td mat-cell *matCellDef="let row">              
-            <mat-icon class="cursor-pointer" color="accent" aria-hidden="false"  (click)="openDialog(row.id, 'view')" (mouseenter)="'Visualizar'">
+      <ng-container matColumnDef="actions" #toggle>
+        <th mat-header-cell *matHeaderCellDef> Ações </th>   
+          <td mat-cell *matCellDef="let row; let i = index" class="position-relative">   
+            <mat-icon [hidden]="menuIndex === i" class="cursor-pointer" (click)="menuIndex = i">
+            menu
+          </mat-icon>
+          <div *ngIf="menuIndex === i" class="tab-row-menu">
+            <div class="label-txt">{{ labelAcaoAtualtemListaMenu }}</div>
+            <mat-icon class="cursor-pointer"  (click)="openDialog(row.id, 'view')" (mouseenter)="labelAcaoAtualtemListaMenu = 'Visualizar'">
                 remove_red_eye
             </mat-icon>
-            <mat-icon class="ms-1 me-1 cursor-pointer" color="primary" aria-hidden="false" (click)="openDialog(row.id, 'edit')"  (mouseenter)="'Editar'">
+            <mat-icon class="ms-1 me-1 cursor-pointer" (click)="openDialog(row.id, 'edit')"  (mouseenter)="labelAcaoAtualtemListaMenu = 'Editar'">
                 edit
             </mat-icon>
-            <mat-icon class="cursor-pointer" color="warn" aria-hidden="false" (click)="deletProduct(row.id)" (mouseenter)="'Excluir'">
+            <mat-icon class="cursor-pointer" (click)="deletProduct(row.id)" (mouseenter)="labelAcaoAtualtemListaMenu = 'Excluir'">
                 delete
             </mat-icon>
+            <mat-icon (click)="menuIndex = undefined" (mouseenter)="labelAcaoAtualtemListaMenu = 'Fechar'" class="cancel">
+              cancel
+            </mat-icon>
+          </div>
         </td>
       </ng-container> 
 

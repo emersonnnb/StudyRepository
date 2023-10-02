@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from "@angular/material/table";
 import { ProductModel } from 'src/app/core/model/product.model';
@@ -26,9 +26,11 @@ export class ProdutosListComponent implements OnInit {
   ];
 
   dataSource = new MatTableDataSource<ProductModel>;  
-  displayedColumns: string[] = [ "id", "name", "price", "category", "stock", "action" ];
+  displayedColumns: string[] = [ "id", "name", "price", "category", "stock", "actions" ];
   searchForm!: FormGroup;
   habilitaPesquisa: boolean = true;
+  menuIndex: number | undefined = undefined;
+  labelAcaoAtualtemListaMenu: string = '';
   
   pageEvent: PageEvent = {
     pageIndex: 0,
@@ -38,28 +40,33 @@ export class ProdutosListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild('toggle') toggle?: ElementRef<HTMLElement>;
 
-  constructor(
+  constructor(    
     public dialog: MatDialog,    
     private api: ProdutoService,
     private _snackBar: MatSnackBar,
-    private formBuilder: FormBuilder,    
-    
+    private formBuilder: FormBuilder,        
   ) { 
-    this.searchForm = this.formBuilder.group({
-      searchBy: [null, Validators.required],
-      searchType: [null, Validators.required],
-    })
-  };
-  
+      this.searchForm = this.formBuilder.group({
+        searchBy: [null, Validators.required],
+        searchType: [null, Validators.required],
+      })
+    };
+    
   ngOnInit(): void {   
     this.getProductslist(this.pageEvent);  
   }
+    
+  @HostListener('document:mousedown', ['$event'])
+  clickOut(event:any): void{
+    if (!this.toggle?.nativeElement.contains(event.target)) {
+      this.menuIndex = undefined;
+    }
+  }
+
 
   getProductslist(event: PageEvent){   
-
-  console.log(this.searchForm.controls['searchBy'].value)
-
     if (this.pageEvent.pageSize !== event.pageSize){
       event.pageIndex = 0;
     }
