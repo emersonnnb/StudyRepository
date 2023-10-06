@@ -31,7 +31,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-
+import { LoginComponent } from './pages/login/login.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    DashboardComponent,    
+    DashboardComponent,
+    LoginComponent,    
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     CurrencyMaskModule,
     MatPaginatorModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

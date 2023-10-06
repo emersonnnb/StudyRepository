@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
@@ -10,7 +11,8 @@ export class NavbarComponent implements OnInit {
   public isCollapsed = true;
   
   constructor(
-    private appService: AppService
+    private appService: AppService,
+    private router: Router 
   ) 
   { }
 
@@ -22,6 +24,10 @@ export class NavbarComponent implements OnInit {
   }
   toggleSidebar() {
     this.appService.toggleSidebar();
+  } 
+
+  logout(){
+    this.router.navigate(['/']);   
   }
 
 }

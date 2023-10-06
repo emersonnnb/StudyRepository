@@ -4,9 +4,12 @@ import { ProdutosListComponent } from './pages/produtos-list/produtos-list.compo
 import { MenuComponent } from './pages/menu/menu.component';
 import { PessoasListComponent } from './pages/pessoas-list/pessoas-list.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
-  { path: "", component: DashboardComponent },
+
+  { path: "", component: LoginComponent },
+  { path: "dashboard", component: DashboardComponent },
   { path: "produtos", component: ProdutosListComponent },  
 ];
 
