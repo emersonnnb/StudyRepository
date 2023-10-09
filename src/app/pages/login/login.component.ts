@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { SignupService } from '../signup/services/signup.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,9 @@ export class LoginComponent {
   
   constructor(      
     private formBuilder: FormBuilder,    
-    private router: Router 
+    private router: Router,
+    private _snackBar: MatSnackBar,
+    private api: SignupService,
   ) { }
 
   ngOnInit(): void {   
@@ -32,29 +36,23 @@ export class LoginComponent {
       this.form.markAllAsTouched();
       return;
     } 
-    console.log(this.form)
+    const values = this.form.value;
+    console.log(values)
 
-    let userName =  this.form.controls['user'].value;
-    let password = this.form.controls['password'].value
+    this.api.getUser().subscribe((res: any)=>{
+      console.log(res);
+      const user =  res.find((a:any)=>{
+        return a.user == values.user && a.password == values.password
+      });
+      console.log(user)
+      if(user != undefined){     
+        localStorage.setItem('token', Math.random().toString());
+        this.router.navigate(['/dashboard/produtos']);
 
-    if(userName != this.login){
-      this.form.controls['user'].setErrors({'incorrect': true});            
-    }
-
-    if(password != this.login){      
-      this.form.controls['password'].setErrors({'incorrect': true});            
-    }
-    
-
-    if (userName == this.login && password  == this.senha ){
-
-      localStorage.setItem(userName, password);
-      this.router.navigate(['/dashboard']);     
-
-    }else{
-      return
-    }
-    console.log(this.form.value)
+      }else{
+        alert("Usuário ou senha invalido")
+      }
+    });
   }
 
   createLogin(){

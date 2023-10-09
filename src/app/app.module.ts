@@ -72,7 +72,8 @@ import { SignupComponent } from './pages/signup/signup.component';
     MatPaginatorModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatMenuModule
+    MatMenuModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

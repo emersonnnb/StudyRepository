@@ -1,9 +1,19 @@
 {
-  "logins": [
+  "users": [
     {
-      "username_db": "admin",
-      "password_db": "123",
-      "id": 1
+      "id": 1,
+      "user": "admin",
+      "password": "123"
+    },
+    {
+      "user": "emerson",
+      "password": "123",
+      "id": 2
+    },
+    {
+      "user": "teste",
+      "password": "123",
+      "id": 3
     }
   ],
   "produtos": [

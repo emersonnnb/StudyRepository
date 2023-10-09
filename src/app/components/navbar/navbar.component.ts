@@ -27,7 +27,11 @@ export class NavbarComponent implements OnInit {
   } 
 
   logout(){
-    this.router.navigate(['/']);   
+    const confirmation = confirm('Do you want to logout')
+    if(confirmation){
+      localStorage.removeItem('token')
+      this.router.navigate(['/']);   
+    }
   }
 
 }
