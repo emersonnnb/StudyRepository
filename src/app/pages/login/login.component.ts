@@ -57,4 +57,8 @@ export class LoginComponent {
     console.log(this.form.value)
   }
 
+  createLogin(){
+    this.router.navigate(['/signup']);    
+  }
+
 }

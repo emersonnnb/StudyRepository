@@ -1,4 +1,11 @@
 {
+  "logins": [
+    {
+      "username_db": "admin",
+      "password_db": "123",
+      "id": 1
+    }
+  ],
   "produtos": [
     {
       "id": 1,

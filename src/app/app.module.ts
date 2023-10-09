@@ -33,6 +33,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { SignupComponent } from './pages/signup/signup.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import {MatMenuModule} from '@angular/material/menu';
     NavbarComponent,
     SidebarComponent,
     DashboardComponent,
-    LoginComponent,    
+    LoginComponent,
+    SignupComponent,    
   ],
   imports: [
     BrowserModule,
